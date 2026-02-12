@@ -1,15 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addTweet, deleteTweet, likeTweet } from '../reducers/tweets';
-import { useState } from 'react';
+import { addTweet, displayTweets } from '../reducers/tweets';
+import { useState, useEffect } from 'react';
 import styles from '../styles/Tweet.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import LastTweet from './LastTweet';
+import Trends from './Trends';
+import { logout } from '../reducers/user';
+import { useRouter } from 'next/router';
+
+import Link from 'next/link';
 
 
 
-function Tweet(props) {
+function Tweet() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.value);
+    const tweets = useSelector((state) => state.tweets.value);
+    const router = useRouter();
 
     const [newTweet, setNewTweet] = useState('');
 
@@ -34,55 +40,74 @@ const handleClick = () => {
                 
  };
 
- 
- 
- 
-  const handleDelete = () => {
-    fetch('http://localhost:3000/tweets/delete', {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'},
-            body: JSON.stringify({ token: user.token, tweetId: props._id }),
-    }) 
-    .then(response => response.json()) 
-    .then(data => {
-        if (data.result) 
-        {
-         dispatch(deleteTweet(props._id)); 
-        }
-     })}
-   
-
-const like = () => {
-    fetch('http://localhost:3000/tweets/like', {
-    method: 'POST', 
-    headers: { 
-        'Content-Type': 'application/json' }, 
-        body: JSON.stringify({ token: user.token, tweetId: props._id }),
-         }) 
+ const displayTweet = () => {
+  fetch('http://localhost:3000/tweets')
          .then(response => response.json()) 
          .then(data => { 
             if (data.result) 
-            { dispatch(likeTweet({tweetId: props._id})); 
-             }
-                 }) 
-}
+            { dispatch(displayTweets(data.tweets)); 
+             } }) 
+            
+ };
 
-let heartIconStyle = { cursor : 'pointer' };
+ useEffect(() => {
+  displayTweet();
+}, []);
+ 
+ 
+
+const handleLogout = () => {
+		dispatch(logout());
+        router.push('/');
+	};
+
+let userSection;
+	if (user.token) {
+		userSection = (
+			<div className={styles.logoutSection}>
+				<p>Welcome {user.username} / </p>
+				<button className={styles.btnLogout} onClick={() => handleLogout()}>Logout</button>
+			</div>
+		);
+	}
+
+  const twitterData = tweets.map((data, i) => {
+  const isLiked = data.likes.some(
+    (like) => like.username === user.username  );
+  return <LastTweet key={data._id} {...data} isLiked={isLiked} />;
+});
+
 
  return (
     <div>
-        <div className={styles.addTweetContainer}>
-         <input type="text" placeholder="What's up ?" onChange={(e) => setNewTweet(e.target.value)} value={newTweet}/>
-         <button onClick={() => handleClick(props.tweet)}>Tweet</button>
+       <main className={styles.main}>  
+        <div className={styles.leftSection}>
+             {userSection}
+            
+
+        </div>
+
+        <div className={styles.middleSection}>
+
+        <Link href="/"  >
+        Home
+        </Link>
+          <div className={styles.addTweetContainer}>
+           <input type="text" placeholder="What's up ?" onChange={(e) => setNewTweet(e.target.value)} value={newTweet}/>
+           <button onClick={() => handleClick()}>Tweet</button>
+          </div>
+          <div className={styles.tweetContainer}>{twitterData}</div>
+           <div className={styles.tweetContainer}>
+             
+            </div>
       </div>
-      <div className={styles.tweetContainer}>
-        <span><FontAwesomeIcon icon={faHeart} onClick={() => like(props.tweet)} style={heartIconStyle} className="like" /></span>
-        {props.username === user.username && (
-        <span><FontAwesomeIcon icon={faTrashCan} onClick={() => handleDelete(props.tweet)} className={styles.deleteBtn}/></span>
-      )}
+      <div className={styles.rightSection}>
+        <h3>Trends</h3>
+
       </div>
+      </main>
    </div>
+      
  );
   }
 

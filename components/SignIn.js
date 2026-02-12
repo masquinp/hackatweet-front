@@ -1,12 +1,14 @@
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "../reducers/user";
+import { login } from "../reducers/user";
 import Image from "next/image";
+import { useRouter } from 'next/router';
 
 function SignIn({ onClose }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
+  const router = useRouter();
 
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
@@ -27,12 +29,10 @@ function SignIn({ onClose }) {
           setSignInUsername("");
           setSignInPassword("");
           onClose();
+          router.push('/tweet');
         }
       });
 
-    const handleLogout = () => {
-      dispatch(logout());
-    };
   };
 
   return (
