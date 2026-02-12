@@ -22,7 +22,7 @@ function Home() {
       <div className={styles.droit}>
         <main className={styles.main}>
           <div>
-            <img src="/images/pngwing.com.png"
+            <Image src="/images/pngwing.png"
           alt="Logo"
           width={120}
           height={120} />
