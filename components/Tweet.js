@@ -2,16 +2,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTweet, deleteTweet, likeTweet } from '../reducers/tweets';
 import { useState } from 'react';
 import styles from '../styles/Tweet.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 
 
 function Tweet(props) {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user.value);
+    const user = useSelector((state) => state.user.value);
 
     const [newTweet, setNewTweet] = useState('');
 
 const handleClick = () => {
+    if (!user.token) {
+        alert("Vous devez être connecté pour tweeter !");
+        return;
+    } 
   fetch('http://localhost:3000/tweets/add', {
     method: 'POST', 
     headers: { 
@@ -31,7 +37,7 @@ const handleClick = () => {
  
  
  
-  const handleDelete = (tweet) => {
+  const handleDelete = () => {
     fetch('http://localhost:3000/tweets/delete', {
         method: 'DELETE',
         headers: {
@@ -42,9 +48,9 @@ const handleClick = () => {
     .then(data => {
         if (data.result) 
         {
-         dispatch(deleteTweet(props.tweetId)); 
+         dispatch(deleteTweet(props._id)); 
         }
-     })
+     })}
    
 
 const like = () => {
@@ -62,6 +68,8 @@ const like = () => {
                  }) 
 }
 
+let heartIconStyle = { cursor : 'pointer' };
+
  return (
     <div>
         <div className={styles.addTweetContainer}>
@@ -69,11 +77,13 @@ const like = () => {
          <button onClick={() => handleClick(props.tweet)}>Tweet</button>
       </div>
       <div className={styles.tweetContainer}>
-        <button onClick={() => like(props.tweet)}>Like</button>
-        <button onClick={() => handleDelete(props.tweet)}>Delete</button>
+        <span><FontAwesomeIcon icon={faHeart} onClick={() => like(props.tweet)} style={heartIconStyle} className="like" /></span>
+        {props.username === user.username && (
+        <span><FontAwesomeIcon icon={faTrashCan} onClick={() => handleDelete(props.tweet)} className={styles.deleteBtn}/></span>
+      )}
       </div>
    </div>
  );
-}
-}
+  }
+
 export default Tweet;
