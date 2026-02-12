@@ -5,17 +5,13 @@ function SignIn() {
     <div className={styles.modalContainer}>
       <div className={styles.modalContent}>
         <div>
-          <img src="image.jpg" alt="Description de l'image" />
+          <img className={styles.modalImg} src="/images/pngwing.png"
+          alt="Logo"
+          width={120}
+          height={120} />
           <h3 className={styles.soustitle}>Join Hackatweet today.</h3>
         </div>
-        <div>
-          <input
-            className={styles.buble}
-            type="text"
-            id="firstname"
-            name="Firstname"
-            placeholder="Firstname"
-          />
+        <div className={styles.buttonContainer}>
           <input
             className={styles.buble}
             type="text"
@@ -30,7 +26,7 @@ function SignIn() {
             name="password"
             placeholder="<Password"
           />
-          <button type="submit">Sign up</button>
+          <button className={styles.btnIn2} type="submit">Sign In</button>
         </div>
       </div>
     </div>
