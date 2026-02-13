@@ -10,23 +10,22 @@
     display: flex;
     flex-direction: column;
     width: 27%;
-    background-color: rgb(39, 122, 163);
-    border: 1px solid black;
+    background-color: #15202b;
+    border-right: 0.2px solid rgba(220, 220, 220, 0.5);
     height: 100vh;
 
 }
 
 .middleSection {
     width: 45%;
-    background-color: pink;
-    border: 1px solid black;
+    background-color: #15202b;
+    border-right: 0.2px solid rgba(220, 220, 220, 0.5);
     height: 100vh;
 }
 
 .rightSection { 
     width: 28%;
-    background-color: violet;
-    border: 1px solid black;
+    background-color: #15202b;
     height: 100vh;
  }
 
@@ -35,4 +34,80 @@
     height: 45px;
     color: white;
     margin: 30px;
+}
+
+.inputTweet {
+   
+    background-color: transparent;
+    font-size: 1.4rem;
+    border-bottom: 1px solid white;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: white;
+    display: flex;
+    width: 90%;
+}
+
+.addTweetContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #38444d;
+}
+
+.compteur {
+   
+    color: white;
+}
+.btnTweet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      width: 5vw;
+        height: 4vh;
+  border: 2px #ffffff solid;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #1161F5;
+  font-size: 14px;
+  border: none;
+}
+
+.h2 {
+    color: white;
+    margin: 20px;
+}
+
+.tweetContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    color: #d4d0d0;
+    border-bottom: 1px solid #38444d;
+}
+
+.logoutSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    margin-top: 400px;
+}
+
+.eggLogo {
+    border-radius: 50%;
+}
+
+.btnLogout {
+    background-color: transparent;
+    color: white;
+    border-radius: 30px;
+    width: 90px;
+    height: 30px;
+    border: white solid 1px;
+    text-align: center;
 }

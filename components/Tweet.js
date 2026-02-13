@@ -8,6 +8,7 @@ import { logout } from '../reducers/user';
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import Image from "next/image";
 
 import Link from 'next/link';
 
@@ -68,7 +69,14 @@ let userSection;
 	if (user.token) {
 		userSection = (
 			<div className={styles.logoutSection}>
-				<p>Welcome {user.username} / </p>
+        <Image className={styles.eggLogo}
+          src="/images/egg.jpg"
+          alt="Logo"
+          width={40}
+          height={40} 
+          >
+        </Image>
+				<p> @{user.username} </p>
 				<button className={styles.btnLogout} onClick={() => handleLogout()}>Logout</button>
 			</div>
 		);
@@ -86,7 +94,7 @@ let userSection;
        <main className={styles.main}>  
         <div className={styles.leftSection}>
           <Link href="/"  >
-          <FontAwesomeIcon className={styles.twitterIcon} icon={faTwitter} />
+          <FontAwesomeIcon className={styles.twitterIcon} icon={faTwitter} flip="vertical"/>
           </Link>
              {userSection}
             
@@ -96,11 +104,13 @@ let userSection;
         <div className={styles.middleSection}>
 
        
-        <h2>Home</h2>
+        <h2 className={styles.h2}>Home</h2>
         
           <div className={styles.addTweetContainer}>
-           <input type="text" placeholder="What's up ?" maxLength={280} onChange={(e) => setNewTweet(e.target.value)} value={newTweet}/>
-           <button onClick={() => handleClick()}>Tweet</button>
+           <input type="text" placeholder="What's up ?" className={styles.inputTweet} maxLength={280} onChange={(e) => setNewTweet(e.target.value)} value={newTweet}/>
+           <span className={styles.compteur}>{newTweet.length}/280</span>
+           <button className={styles.btnTweet} onClick={() => handleClick()}>Tweet</button>
+           
           </div>
           <div className={styles.tweetContainer}>{twitterData}</div>
            <div className={styles.tweetContainer}>
@@ -108,7 +118,7 @@ let userSection;
             </div>
       </div>
       <div className={styles.rightSection}>
-        <h3>Trends</h3>
+        <h2 className={styles.h2}>Trends</h2>
 
       </div>
       </main>
