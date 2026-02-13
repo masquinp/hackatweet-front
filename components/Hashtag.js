@@ -66,16 +66,13 @@ function Hashtag() {
              {userSection}
         </div>
 
-
         <div className={styles.middleSection}>
         <h2>Hashtag</h2>
           <div className={styles.searchHashtagContainer}>
             <p>#{hashtag}</p>
 
-
            <input type="text" placeholder="search Hashtags" maxLength={280} onChange={(e) => setSearchHashtag(e.target.value)} value={searchHashtag}/>
           </div>
-
 
           <div className={styles.hashtagContainer}>
             {hashtagData.length > 0 ? hashtagData : <p>Aucun tweet trouvé</p>}
