@@ -6,6 +6,8 @@ import LastTweet from './LastTweet';
 import Trends from './Trends';
 import { logout } from '../reducers/user';
 import { useRouter } from 'next/router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 import Link from 'next/link';
 
@@ -36,7 +38,8 @@ const handleClick = () => {
             { dispatch(addTweet(data.tweet)); 
                 setNewTweet('');
              } else {
-                 alert('Erreur : ' + data.error); } }) 
+                 alert('Erreur : ' + data.error); } 
+}) 
                 
  };
 
@@ -82,6 +85,9 @@ let userSection;
     <div>
        <main className={styles.main}>  
         <div className={styles.leftSection}>
+          <Link href="/"  >
+          <FontAwesomeIcon className={styles.twitterIcon} icon={faTwitter} />
+          </Link>
              {userSection}
             
 
@@ -89,11 +95,11 @@ let userSection;
 
         <div className={styles.middleSection}>
 
-        <Link href="/"  >
-        Home
-        </Link>
+       
+        <h2>Home</h2>
+        
           <div className={styles.addTweetContainer}>
-           <input type="text" placeholder="What's up ?" onChange={(e) => setNewTweet(e.target.value)} value={newTweet}/>
+           <input type="text" placeholder="What's up ?" maxLength={280} onChange={(e) => setNewTweet(e.target.value)} value={newTweet}/>
            <button onClick={() => handleClick()}>Tweet</button>
           </div>
           <div className={styles.tweetContainer}>{twitterData}</div>

@@ -17,12 +17,16 @@ export const tweetsSlice = createSlice({
   );
 },
 		likeTweet: (state, action) => {
-         const tweet = state.value.find(
-           tweet => tweet._id === action.payload.tweetId
-             );
-             if (tweet) {
-               tweet.likes.push({ username: action.payload.username });
-     }
+       const tweet = state.value.find(
+       tweet => tweet._id === action.payload.tweetId
+          );
+        if (tweet) {
+          const alreadyLiked = tweet.likes.some(user => user.username === action.payload.username);
+          if (alreadyLiked) {
+            tweet.likes = tweet.likes.filter(user => user.username !== action.payload.username);
+          } else {
+         tweet.likes.push({ username: action.payload.username });
+     }}
      },
     
       displayTweets: (state, action) => {state.value = action.payload; 

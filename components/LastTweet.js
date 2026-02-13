@@ -21,11 +21,16 @@ function LastTweet(props) {
              .then(response => response.json()) 
              .then(data => { 
                 if (data.result) 
-                { dispatch(likeTweet({tweetId: props._id})); 
+                { dispatch(likeTweet({ tweetId: props._id, username: user.username})); 
                  }
                      }) 
     }
 
+
+    let heartIconStyle = {};
+	if (props.isLiked) {
+		heartIconStyle = { 'color': 'red', 'cursor': 'pointer' };
+	}
 
      const handleDelete = () => {
         fetch('http://localhost:3000/tweets/delete', {
@@ -47,7 +52,7 @@ function LastTweet(props) {
          return (
             <div>
                 <p><strong>{props.author?.username}</strong> : {props.content}</p>
-             <span><FontAwesomeIcon icon={faHeart} onClick={() => handleLike()} style={{ cursor: 'pointer' }} className="like" /></span>
+             <span><FontAwesomeIcon icon={faHeart} onClick={() => handleLike()} style={heartIconStyle} className="like" /></span>
              {props.author?.username === user.username && (
              <span><FontAwesomeIcon icon={faTrashCan} onClick={() => handleDelete()} style={{ cursor: 'pointer', marginLeft: '10px' }} className={styles.deleteBtn}/></span> )}
             </div>
