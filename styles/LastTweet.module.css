@@ -1,0 +1,29 @@
+.tweetBox {
+  border-bottom: 1px solid #38444d;
+  display: flex;
+  flex-direction: column;
+}
+
+.tweetHeader {
+  display: flex;
+  flex-direction: row;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+}
+
+.actions {
+  margin: 15px;
+}
+
+.profilePic {
+  border-radius: 50%;
+}
+
+.tweetContent {
+  display: flex;
+  margin: 10px;
+}

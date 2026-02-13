@@ -1,113 +1,112 @@
 .main {
-    background-color: #15202b;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: row; 
+  background-color: #15202b;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  overflow-y: scroll;
 }
 
 .leftSection {
-    display: flex;
-    flex-direction: column;
-    width: 27%;
-    background-color: #15202b;
-    border-right: 0.2px solid rgba(220, 220, 220, 0.5);
-    height: 100vh;
-
+  display: flex;
+  flex-direction: column;
+  width: 27%;
+  background-color: #15202b;
+  border-right: 0.2px solid rgba(220, 220, 220, 0.5);
+  height: 100vh;
 }
 
 .middleSection {
-    width: 45%;
-    background-color: #15202b;
-    border-right: 0.2px solid rgba(220, 220, 220, 0.5);
-    height: 100vh;
+  width: 45%;
+  background-color: #15202b;
+  border-right: 0.2px solid rgba(220, 220, 220, 0.5);
+  height: 100vh;
+  overflow-y: scroll;
 }
 
-.rightSection { 
-    width: 28%;
-    background-color: #15202b;
-    height: 100vh;
- }
+.rightSection {
+  width: 28%;
+  background-color: #15202b;
+  height: 100vh;
+}
 
 .twitterIcon {
-    width: 45px;
-    height: 45px;
-    color: white;
-    margin: 30px;
+  width: 45px;
+  height: 45px;
+  color: white;
+  margin: 30px;
 }
 
 .inputTweet {
-   
-    background-color: transparent;
-    font-size: 1.4rem;
-    border-bottom: 1px solid white;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    color: white;
-    display: flex;
-    width: 90%;
+  background-color: transparent;
+  font-size: 1.4rem;
+  border-bottom: 1px solid white;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  color: white;
+  display: flex;
+  width: 90%;
 }
 
 .addTweetContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    border-bottom: 1px solid #38444d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid #38444d;
 }
 
 .compteur {
-   
-    color: white;
+  color: white;
 }
 .btnTweet {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-      width: 5vw;
-        height: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5vw;
+  height: 4vh;
   border: 2px #ffffff solid;
   border-radius: 10px;
   color: #ffffff;
-  background-color: #1161F5;
+  background-color: #1161f5;
   font-size: 14px;
   border: none;
+  cursor: pointer;
 }
 
 .h2 {
-    color: white;
-    margin: 20px;
+  color: white;
+  margin: 20px;
 }
 
 .tweetContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
-    color: #d4d0d0;
-    border-bottom: 1px solid #38444d;
+  display: flex;
+  flex-direction: column;
+  color: #d4d0d0;
+ 
 }
 
 .logoutSection {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    color: white;
-    margin-top: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  margin-top: 400px;
 }
 
 .eggLogo {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .btnLogout {
-    background-color: transparent;
-    color: white;
-    border-radius: 30px;
-    width: 90px;
-    height: 30px;
-    border: white solid 1px;
-    text-align: center;
+  background-color: transparent;
+  color: white;
+  border-radius: 30px;
+  width: 90px;
+  height: 30px;
+  border: white solid 1px;
+  text-align: center;
+  cursor: pointer;
 }
