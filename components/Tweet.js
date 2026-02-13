@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import Image from "next/image";
 
+
 import Link from 'next/link';
 
 
@@ -82,11 +83,18 @@ let userSection;
 		);
 	}
 
+  const handleHashtagClick = (hashValue) => {
+    const tagName = hashValue.slice(1);
+     router.push(`/hashtag/${tagName}`);
+  };
+
   const twitterData = tweets.map((data, i) => {
   const isLiked = data.likes.some(
     (like) => like.username === user.username  );
-  return <LastTweet key={data._id} {...data} isLiked={isLiked} />;
+  return <LastTweet key={data._id} {...data} isLiked={isLiked} selectHashtag={handleHashtagClick}/>;
 });
+
+
 
 
  return (
@@ -118,7 +126,9 @@ let userSection;
             </div>
       </div>
       <div className={styles.rightSection}>
+        
         <h2 className={styles.h2}>Trends</h2>
+        
 
       </div>
       </main>

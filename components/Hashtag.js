@@ -15,6 +15,7 @@ function Hashtag() {
   const user = useSelector((state) => state.user.value);
   const tweets = useSelector((state) => state.tweets.value);
   const router = useRouter();
+  const { hashtag } = router.query;
 
   const [searchHashtag, setSearchHashtag] = useState("");
 
@@ -69,6 +70,7 @@ function Hashtag() {
         <div className={styles.middleSection}>
         <h2>Hashtag</h2>
           <div className={styles.searchHashtagContainer}>
+            <p>#{hashtag}</p>
 
 
            <input type="text" placeholder="search Hashtags" maxLength={280} onChange={(e) => setSearchHashtag(e.target.value)} value={searchHashtag}/>
