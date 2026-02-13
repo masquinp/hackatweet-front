@@ -29,3 +29,10 @@
     border: 1px solid black;
     height: 100vh;
  }
+
+ .twitterIcon {
+    width: 45px;
+    height: 45px;
+    color: white;
+    margin: 30px;
+}
