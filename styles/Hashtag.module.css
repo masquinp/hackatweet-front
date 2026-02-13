@@ -10,29 +10,32 @@
     display: flex;
     flex-direction: column;
     width: 27%;
-    background-color: rgb(65, 182, 113);
-    border: 1px solid black;
+    background-color: #15202b;
+    border-right: 0.2px solid rgba(220, 220, 220, 0.5);
     height: 100vh;
 
 }
 
 .middleSection {
     width: 45%;
-    background-color: rgb(53, 103, 161);
-    border: 1px solid black;
+    background-color: #15202b;
+    border-right: 0.2px solid rgba(220, 220, 220, 0.5);
     height: 100vh;
 }
 
 .rightSection { 
     width: 28%;
-    background-color: rgb(130, 238, 224);
-    border: 1px solid black;
+    background-color: #15202b;
     height: 100vh;
  }
 
- .twitterIcon {
+.twitterIcon {
     width: 45px;
     height: 45px;
     color: white;
     margin: 30px;
+}
+
+.title {
+    color: white;
 }
