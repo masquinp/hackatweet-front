@@ -39,6 +39,7 @@ function Hashtag() {
     router.push("/");
   };
 
+  
   const userSection = user.token ? (
     <div>
       <p>Welcome {user.username}</p>
@@ -46,15 +47,12 @@ function Hashtag() {
     </div>
   ) : null;
 
-  const userTweets = tweets.filter(tweet => tweet.author.username === user.username);
-
-  const hashtagData = userTweets
+  const hashtagData = tweets
     .filter(tweet => tweet.content.toLowerCase().includes(searchHashtag.toLowerCase()))
     .map(tweet => {
       const isLiked = tweet.likes?.some(like => like.username === user.username) || false;
       return <LastTweet key={tweet._id} {...tweet} isLiked={isLiked} />;
     });
-
 
   return (
     <div>
@@ -67,7 +65,7 @@ function Hashtag() {
         </div>
 
         <div className={styles.middleSection}>
-        <h2>Hashtag</h2>
+        <h2 className={styles.title}>Hashtag</h2>
           <div className={styles.searchHashtagContainer}>
             <p>#{hashtag}</p>
 
@@ -80,7 +78,7 @@ function Hashtag() {
 
       </div>
       <div className={styles.rightSection}>
-        <h3>Trends</h3>
+        <h3 className={styles.title}>Trends</h3>
       </div>
       </main>
    </div>
